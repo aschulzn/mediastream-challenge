@@ -28,5 +28,24 @@ const User = require('./models/User');
 const app = express();
 
 // TODO
+app.get('/users', function(req, res) {
+  var fs = require('fs');
+  User.find(function(err, users) {
+    if(err) {
+      return res.send(err);
+    }
+    var csvText = '';
+    users.forEach(function(user) {
+      csvText = csvText + user.name + ',' + user.email + '\n';
+    });
+    fs.writeFile('users.csv', csvText, 'utf8', function (err) {
+      if(err) {
+        return res.send('Ha ocurrido un error');
+      }
+      return res.download('users.csv', 'Users.csv');
+    });
+    //
+  });
+});
 
 app.listen(3000);
