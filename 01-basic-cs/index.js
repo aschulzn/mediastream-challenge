@@ -49,3 +49,4 @@ total = _.chain(hats)
 assert.equal(total, 23, `Invalid result: ${total} != 23`);
 
 console.log('Success!');
+console.log('La complejidad es de f(n^2)');
