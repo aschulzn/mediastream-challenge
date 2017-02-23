@@ -53,7 +53,7 @@ class List extends React.Component {
   }
   formatDates(){
     return this.props.dates.map(function(date, index) {
-      return <li key={index}>{moment(date).format('DD/MMM/YYYY')} </li>;
+      return <li key={index} onClick={function() {alert(index)}}>({moment(date).format('DD/MMM/YYYY')})</li>;
     })
   }
   render() {
